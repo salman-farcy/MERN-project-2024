@@ -27,7 +27,7 @@ const register = async (req, res) => {
 //* About 
 const about = async (req, res) => {
      try{
-          res.status(200).send("This is a About page")
+          res.status(400).send({msg: 'this is a bad requiest'})
      }
      catch(error){
           console.log(error);

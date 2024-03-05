@@ -6,13 +6,13 @@
 
 const express = require("express");
 const router = express.Router()
-const { home, register, about } = require("../controllers/auth-comtrollers");
+const authcontrollers = require("../controllers/auth-comtrollers");
 
-router.route("/").get(home);
+router.route("/").get(authcontrollers.home);
 
-router.route("/register").get(register);
+router.route("/register").get(authcontrollers.register);
 
-router.route("/about").get(about);
+router.route("/about").get(authcontrollers.about);
 
 
 module.exports = router;
