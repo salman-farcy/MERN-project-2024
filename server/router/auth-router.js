@@ -1,4 +1,3 @@
-
 //*express.Router
 //? In Express.js, express.Router() is a mini Express application all the server cinfiguration but with the ability to define routes, middleware, and even have its own set of route handlers. It allows you to modularize yuor routes and middleware to keep your code prganized and maintainable.
 //* https://express.js.com/guide/routing.html
@@ -10,22 +9,13 @@
 const express = require("express");
 const router = express.Router()
 
-// router.get("/", (req, res) => {
-//      res
-//           .status(200)
-//           .send("Welcome to world best mern series by salman farcy USING router");
-// });
-
-//! Method Two
 router.route("/").get((req, res) => {
      res.status(200).send("Welcome to world best mern series by salman farcy USING router");
 });
 
-//! Method Two
 router.route("/register").get((req, res) => {
      res.status(200).send("Welcome to registration page");
 });
-
 
 
 module.exports = router;
