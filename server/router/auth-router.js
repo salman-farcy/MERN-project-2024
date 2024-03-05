@@ -4,18 +4,15 @@
 //? Use the express.Router class to create modular, mountable route handlers. A Router Instance is a complete middleware and routing system; for this reason, it is often referred to as a "mini-app".
 
 
-
-
 const express = require("express");
 const router = express.Router()
+const { home, register, about } = require("../controllers/auth-comtrollers");
 
-router.route("/").get((req, res) => {
-     res.status(200).send("Welcome to world best mern series by salman farcy USING router");
-});
+router.route("/").get(home);
 
-router.route("/register").get((req, res) => {
-     res.status(200).send("Welcome to registration page");
-});
+router.route("/register").get(register);
+
+router.route("/about").get(about);
 
 
 module.exports = router;
