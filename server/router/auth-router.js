@@ -21,8 +21,8 @@ router.route("/").get((req, res) => {
      res.status(200).send("Welcome to world best mern series by salman farcy USING router");
 });
 
-//! Method One
-router.get("/register", (req, res) => {
+//! Method Two
+router.route("/register").get((req, res) => {
      res.status(200).send("Welcome to registration page");
 });
 
