@@ -10,7 +10,7 @@ const authcontrollers = require("../controllers/auth-comtrollers");
 
 router.route("/").get(authcontrollers.home);
 
-router.route("/register").get(authcontrollers.register);
+router.route("/register").post(authcontrollers.register);
 
 router.route("/about").get(authcontrollers.about);
 

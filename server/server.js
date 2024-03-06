@@ -3,6 +3,9 @@ const app = express();
 const PORT = 5000;
 const router = require('./router/auth-router')
 
+//*Middleware
+app.use(express.json());
+
 //?Mount the Router: To use the router in your main Express app, you can "mount" it at a specific URL prefix
 app.use('/', router)
 
