@@ -4,12 +4,12 @@ const mongoose = require("mongoose");
 
 
 // const URI = "mongodb://127.0.0.1:27017/mern_admin";
-const uri = `mongodb+srv://${process.env.MONGODB_USER_NAME}:${process.env.MONGODB_USER_PASSWORD}@cluster0.rb5g6hh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+const URI = `mongodb+srv://${process.env.MONGODB_USER_NAME}:${process.env.MONGODB_USER_PASSWORD}@cluster0.rb5g6hh.mongodb.net/${process.env.MONGODB_COLLECTION_NAME}?retryWrites=true&w=majority&appName=Cluster0`
 
 
 const connectDb = async () => {
     try {
-        await mongoose.connect(uri);
+        await mongoose.connect(URI);
         console.log("connnection successful to DB");
 
     }
@@ -19,4 +19,4 @@ const connectDb = async () => {
     }
 };
 
-module.exports = connectDb;
+module.exports = connectDb; 
