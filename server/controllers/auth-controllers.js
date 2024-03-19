@@ -35,11 +35,9 @@ const register = async (req, res) => {
                return res.status(400).json({ msg: "email already Exists" })
           }
           const userCreated = await User.create({ username, email, phone, password });
-          // console.log(userCreated);
-          res.status(200).send({ msg: userCreated });
+          res.status(201).send({ msg: userCreated });
      }
      catch (error) {
-          console.log(error);
           res.status(500).json("internal server error")
      }
 }
