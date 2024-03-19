@@ -57,6 +57,8 @@ userSchema.pre('save', async function (next) {
 //? Payload: Contains claims or statements about an entity (typically, the user) and additional data. Common claims include user ID, username, and expiration time.
 //? Signature: To verify that the sender of the JWT is who it says it is and to ensure that the message wasn't changed along the way, a signature is included.
 
+//TODO: json web token
+//* Tokens, such as JWTs (JSON Web Tokens), are typically not stored in the database along with other user details. Instead, they are issued by the server during the authentication process and then stored on the client-side (e.g., in cookies or local storage) for later use.
 
 //define the model or the collection name
 const User = new mongoose.model("User", userSchema);
