@@ -43,7 +43,35 @@ const register = async (req, res) => {
                });
      }
      catch (error) {
-          res.status(500).json("internal server error")
+          res.status(500).json("internal server error");
+     }
+}
+
+//*Login
+const login = async (req, res) => {
+     try {
+          const { email, password } = req.body;
+          const userExist = await User.findOne({ email });
+          console.log(userExist);
+
+          if (!userExist) {
+               return res.status(400).json({ message: "Invalid Credentials" })
+          }
+
+          const isPasswordValid = await bcrypt.compare(password, userExist.password);
+          // console.log(isPasswordValid);
+          
+          if(isPasswordValid) {
+               res.status(200).json({
+                    msg: "Login Successful",
+                    token: await userExist.generateToken(),
+                    userId: userExist._id.toString(),
+               });
+          } else {
+               res.status(401).json({ message: "Invalid emali or password" })
+          }
+     } catch (error) {
+          res.status(500).json("internal server error");
      }
 }
 
@@ -58,4 +86,4 @@ const about = async (req, res) => {
 }
 
 
-module.exports = { home, register, about }
+module.exports = { home, register, login, about }
