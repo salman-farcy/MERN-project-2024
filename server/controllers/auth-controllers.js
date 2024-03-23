@@ -1,5 +1,5 @@
 const User = require('../models/user-modle');
-
+const bcrypt = require("bcryptjs");
 
 
 
@@ -52,22 +52,23 @@ const login = async (req, res) => {
      try {
           const { email, password } = req.body;
           const userExist = await User.findOne({ email });
-          console.log(userExist);
+          // console.log(userExist);
 
           if (!userExist) {
                return res.status(400).json({ message: "Invalid Credentials" })
           }
 
-          const isPasswordValid = await bcrypt.compare(password, userExist.password);
-          // console.log(isPasswordValid);
-          
-          if(isPasswordValid) {
+          const user = await bcrypt.compare(password, userExist.password);
+          console.log(user);
+
+          if (user) {
                res.status(200).json({
-                    msg: "Login Successful",
+                    message: "Login Successful",
                     token: await userExist.generateToken(),
                     userId: userExist._id.toString(),
                });
-          } else {
+          }
+          else {
                res.status(401).json({ message: "Invalid emali or password" })
           }
      } catch (error) {
