@@ -52,27 +52,27 @@ const login = async (req, res) => {
      try {
           const { email, password } = req.body;
           const userExist = await User.findOne({ email });
-          // console.log(userExist);
+          console.log(userExist);
 
           if (!userExist) {
-               return res.status(400).json({ message: "Invalid Credentials" })
+               return res.status(400).send({ message: "Invalid Credentials" })
           }
 
           const user = await bcrypt.compare(password, userExist.password);
           console.log(user);
 
           if (user) {
-               res.status(200).json({
+               res.status(200).send({
                     message: "Login Successful",
                     token: await userExist.generateToken(),
                     userId: userExist._id.toString(),
                });
           }
           else {
-               res.status(401).json({ message: "Invalid emali or password" })
+               res.status(401).send({ message: "Invalid emali or password" })
           }
      } catch (error) {
-          res.status(500).json("internal server error");
+          res.status(500).send("internal server error");
      }
 }
 
