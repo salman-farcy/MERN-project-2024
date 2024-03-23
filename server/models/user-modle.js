@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
      }
 });
 
-//* secure the password with the bcrypt
+//* secure the password with the bcrypt in register
 userSchema.pre('save', async function (next) {
      console.log("pre mathod", this);
      const user = this;
@@ -51,7 +51,7 @@ userSchema.methods.comparePassword = async function (password) {
      return bcrypt.compare(password, this.password)
 }
 
-//* Generate JSON Web Token register
+//* Generate JSON Web Token register/login
 userSchema.methods.generateToken = async function () {
      try {
        return jwt.sign(
