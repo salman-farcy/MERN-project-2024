@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
 
 //* secure the password with the bcrypt in register
 userSchema.pre('save', async function (next) {
-     console.log("pre mathod", this);
+     // console.log("pre mathod", this);
      const user = this;
 
      if (!user.isModified('password')) {

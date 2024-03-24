@@ -12,7 +12,7 @@ const signupSchema = z
                .max(255, { message: "Name Must not be more than 255 Character" }),
 
           email: z
-               .string({ required_error: "Name is required" })
+               .string({ required_error: "email is required" })
                .trim()
                .email({ message: "Invalid email address" })
                .min(3, { message: "email Must be at lest of 3 Character" })
@@ -25,11 +25,26 @@ const signupSchema = z
                .max(20, { message: "Phone Must not be more than 20 Character" }),
 
           password: z
-               .string({ required_error: "Name is required" })
+               .string({ required_error: "password is required" })
                .trim()
                .min(8, { message: "Password Must be at lest of 8 Character" })
                .max(1024, { message: "Password Must not be more than 1024 Character" })
      });
 
+const loginSchema = z
+     .object({
+          email: z
+               .string({ required_error: "email is required" })
+               .trim()
+               .email({ message: "Invalid email address" })
+               .min(3, { message: "email Must be at lest of 3 Character" })
+               .max(40, { message: "email Must not be more than 40 Character" }),
 
-module.exports = signupSchema ;
+          password: z
+               .string({ required_error: "password is required" })
+               .trim()
+               .min(8, { message: "Password Must be at lest of 8 Character" })
+               .max(1024, { message: "Password Must not be more than 1024 Character" })
+     });
+
+module.exports = {signupSchema, loginSchema};
