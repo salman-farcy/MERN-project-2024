@@ -1,0 +1,17 @@
+.container{
+     max-width: 140rem;
+     padding: 4.2rem;
+     display: flex;
+     justify-content: space-between;
+     margin: auto;
+}
+
+.item{
+     display: flex;
+     justify-content: space-between;
+     gap: 3rem;
+}
+
+li{
+     list-style: none;
+}
